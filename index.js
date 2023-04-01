@@ -63,7 +63,7 @@ async function run() {
         
             
           })
-           //add new products or insert products
+           //add new orders or insert orders
         app.post("/addOrder",async(req,res)=>{
             const order=req.body;
             //console.log("new product added",product);

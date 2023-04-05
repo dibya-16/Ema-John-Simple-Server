@@ -39,9 +39,19 @@ async function run() {
             
           })
           //get products
+          {/*app.get('/products',async(req,res)=>{
+            const query = {};
+           
+            const cursor = productCollection.find(query);//.find(query).limit(4) ebhabe just 4 tah dekhabo emn fix korte pari 
+            const products = await cursor.toArray();
+            res.send(products);
+            
+            })*/}
+          //get products+search
          app.get('/products',async(req,res)=>{
         const query = {};
-        const cursor = productCollection.find(query);//.find(query).limit(4) ebhabe just 4 tah dekhabo emn fix korte pari 
+        const search=req.query.search;
+        const cursor = productCollection.find({name:{$regex:search}});//.find(query).limit(4) ebhabe just 4 tah dekhabo emn fix korte pari 
         const products = await cursor.toArray();
         res.send(products);
         
